@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: #111827;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+  }
+
+  .nav-left a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #374151;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .nav-right input {
+    padding: 6px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .btn-link {
+    text-decoration: none;
+    color: #111827;
+  }
+
+  .btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .btn-green {
+    background-color: #10b981;
+    color: white;
+  }  /* Section umum */
+  section {
+    padding: 0 20px;
+    margin: 40px auto;
+    max-width: 700px;
+  }
+
+  /* Hero section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px 40px;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 700px;
+  }
+  hr {
+    width: 53%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+  }
+  .hr2 {
+    width: 100%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+  }
+
+
+  /* Tanggal */
+  .date {
+    text-align: center;
+    color: #374151;
+    font-size: 14px;
+    margin: 20px 0;
+  }
+
+  /* Judul section */
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+    color: #2563eb;
+    font-weight: 500;
+    margin-top: 24px;
+  }
+
+  /* Template list */
+  .template ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .template li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #2563eb;
+    padding: 4px 0;
+  }
+
+  .template li i {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+  }
+
+  /* Alasan */
+  .reasons ol {
+    padding-left: 20px;
+    color: #374151;
+  }
+
+  .reasons li {
+    margin-bottom: 20px;
+  }
+
+  /* Alur */
+  .alur ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 8px;
+    color: #374151;
+  }
+
+  /* Kontak */
+  .kontak {
+    margin-top: 48px;
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.8;
+  }
+
+  .kontak p strong {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .kontak a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  /* navbar.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #4285F4;
+  padding: 16px 32px;
+  color: white;
+  flex-wrap: wrap;
+}
+
+/* NAV MENU */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu li a {
+  display: flex;
+}
+.nav-menu li {
+  position: relative;
+  list-style: none;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.nav-menu a:hover {
+  text-decoration: underline;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+  list-style: none;
+}
+
+.dropdown ul,
+.dropdown li {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  display: flex;
+  margin-top: 3px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown .icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  margin-top: 2px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .icon,
+.dropdown.active .icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 22px;
+  left: 0;
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: 1000;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* SEARCH */
+.nav-search {
+  flex: 1;
+  max-width: 400px;
+  padding: 0 20px;
+  margin-right: 300px;
+}
+
+.nav-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid white;
+  outline: none;
+}
+
+/* BUTTONS */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-login,
+.btn-register {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn-login {
+  background-color: white;
+  color: black;
+}
+
+.btn-login:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-register {
+  background-color: #16a34a;
+  color: white;
+}
+
+.btn-register:hover {
+  background-color: #15803d;
+}

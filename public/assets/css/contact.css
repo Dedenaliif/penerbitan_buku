@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+
+  .container {
+    max-width: 600px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+
+  .info-kontak h1 {
+    color: #2c2c5c;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .info-kontak > p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .info2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item-kontak {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #444;
+    font-size: 15px;
+  }
+
+  .item-kontak i {
+    color: #7a5af5;
+    font-size: 18px;
+    margin-top: 2px;
+  }
+
+  .item-kontak a {
+    color: #7a5af5;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  .item-kontak a:hover {
+    text-decoration: underline;
+  }
+
+  .item-kontak p {
+    margin: 0;
+    color: #444;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .gambar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .gambar img {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    height: auto;
+    margin-left:250px;
+  }
+
+  a {
+    color: #754FFE;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
