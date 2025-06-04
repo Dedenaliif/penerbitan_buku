@@ -62,6 +62,7 @@
 
               <!-- Menu Items -->
               <ul class="py-2 text-sm">
+                @if(Auth::user()->role == 'penulis')
                 <li>
                   <a href="{{ url('dashboard') }}" class="flex items-center gap-2 px-5 py-3 hover:bg-gray-100">
                     <img src="{{ asset('assets/image/ikon/dashboardikon.svg') }}" alt="dashboard">
@@ -86,6 +87,29 @@
                     Ubah Password
                   </a>
                 </li>
+                @endif
+                @if(Auth::user()->role == 'admin')
+                <li>
+                    <a href="{{ url('review-naskah') }}" class="flex items-center gap-2 px-5 py-3 hover:bg-gray-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v6l4 2m4 2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2h12a2 2 0 002-2z" />
+                        </svg>
+                      Review Naskah
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('verifikasi-pembayaran') }}" class="flex items-center gap-2 px-5 py-3 hover:bg-gray-100">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 8c-2.28 0-4 .895-4 2s1.72 2 4 2 4 .895 4 2-1.72 2-4 2m0-10v2m0 8v2" />
+                      </svg>
+                      Verifikasi Pembayaran
+                    </a>
+                </li>
+                @endif
               </ul>
 
               <!-- Logout -->

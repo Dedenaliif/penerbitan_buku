@@ -15,12 +15,13 @@ class CreateNaskahsTable extends Migration
     {
         Schema::create('naskahs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // ← tambahkan ini
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('judul');
             $table->string('topik_id');
             $table->text('sinopsis');
             $table->string('file_naskah');
             $table->string('link_cover')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

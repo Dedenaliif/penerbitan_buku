@@ -10,7 +10,6 @@
         title: 'Berhasil',
         text: '{{ session('success') }}',
         showConfirmButton: true,
-        // timer: 2500
     });
 </script>
 @endif
@@ -19,16 +18,12 @@
     <div class="max-w-7xl mx-auto flex gap-6">
 
         <!-- Sidebar -->
-        @include('dashboard.sidebar')
+        @include('admin.dashboard.sidebar')
 
         <!-- Main Content -->
         <main class="flex-1 bg-white rounded-xl p-8 shadow-md border">
             <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-semibold text-gray-800">Data Ajuan Naskah</h1>
-                <a href="{{ url('naskah-buku-add') }}"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium shadow">
-                    + Ajukan Naskah
-                </a>
+                <h1 class="text-2xl font-semibold text-gray-800">Review Naskah</h1>
             </div>
 
             <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
@@ -40,7 +35,7 @@
                             <th class="px-6 py-3">Penulis</th>
                             <th class="px-6 py-3">Reviewer</th>
                             <th class="px-6 py-3">Tanggal</th>
-                            <th class="px-6 py-3">Lampiran</th>
+                            <th class="px-6 py-3">Preview</th>
                             <th class="px-6 py-3">Status</th>
                             <th class="px-6 py-3">Aksi</th>
                         </tr>
@@ -66,50 +61,49 @@
                                 </td>
                                 <td class="px-6 py-4">{{ $naskah->created_at->format('d M Y') }}</td>
                                 <td class="px-6 py-4">
-                                    @if ($naskah->file_naskah)
-                                        <a href="{{ asset('storage/' . $naskah->file_naskah) }}"
-                                           class="text-blue-600 hover:underline"
-                                           target="_blank">
-                                           Unduh
-                                        </a>
-                                    @else
-                                        <span class="text-gray-400">Tidak ada</span>
-                                    @endif
+                                <button
+                                    onclick="openModal(`{{ addslashes($naskah->judul) }}`, `{!! addslashes(strip_tags($naskah->sinopsis)) !!}`)"
+                                    class="text-green-600 hover:underline text-sm">
+                                    Preview
+                                </button>
                                 </td>
                                 <td class="px-6 py-4">
-                                @if ($naskah->status === 'disetujui')
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                                        Disetujui
-                                    </span>
-                                @elseif ($naskah->status === 'ditolak')
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
-                                        Ditolak
-                                    </span>
-                                @else
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                                        dalam peninjauan
-                                    </span>
-                                @endif
+                                    @if ($naskah->status === 'disetujui')
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                            Disetujui
+                                        </span>
+                                    @elseif ($naskah->status === 'ditolak')
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                                            Ditolak
+                                        </span>
+                                    @else
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                                            dalam peninjauan
+                                        </span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 flex space-x-3">
-                                    <button
-                                        onclick="openModal(`{{ addslashes($naskah->judul) }}`, `{!! addslashes(strip_tags($naskah->sinopsis)) !!}`)"
-                                        class="text-green-600 hover:underline text-sm">
-                                        Preview
-                                    </button>
-
-                                    <form action="{{ route('naskah.destroy', $naskah->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="text-red-600 hover:underline text-sm delete-btn">Hapus</button>
-                                    </form>
+                                @if (!in_array($naskah->status, ['disetujui', 'ditolak']))
+                                    <a href="{{ url('review-naskah-setujui/'.$naskah->id) }}" title="Setujui" class="text-green-600 hover:text-green-800">
+                                        <!-- Icon centang -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </a>
+                                    <a href="{{ url('review-naskah-tolak/'.$naskah->id) }}" title="Tolak" class="text-red-600 hover:text-red-800">
+                                        <!-- Icon silang -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </a>
+                                @endif
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="px-6 py-6 text-center text-gray-500 italic">
-                                    Anda belum mengajukan naskah.
-                                </td>
+                                <td colspan="8" class="text-center py-6 text-gray-400 italic">Tidak ada naskah yang tersedia.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -158,27 +152,6 @@
         modal.firstElementChild.classList.remove('scale-100');
     }
 </script>
-
-<script>
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Naskah Akan Dihapus",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#aaa',
-                confirmButtonText: 'Ya, hapus!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.closest('form').submit();
-                }
-            });
-        });
-    });
-</script>
-
 
 <!-- Fade-in Animation -->
 <style>

@@ -25,7 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('dashboard')->with('success','Login Berhasil');
+        $user = Auth::user();
+
+        if ($user->role === 'penulis') {
+            return redirect('dashboard')->with('success','Login Berhasil');
+        } else {
+            return redirect('review-naskah')->with('success','Login Berhasil');
+        }
+
     }
 
     public function profil()

@@ -14,12 +14,13 @@ class CreateCartsTable extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->id();  // kolom id (PK)
+            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // relasi ke tabel users
             $table->string('nama_paket');
-            $table->string('instansi');      // contohnya 'Sivitas' atau 'Nonsivitas'
+            $table->string('instansi');
             $table->integer('jumlah_halaman');
             $table->bigInteger('total_harga');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

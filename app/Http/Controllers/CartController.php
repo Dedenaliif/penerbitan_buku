@@ -17,7 +17,9 @@ class CartController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $cartItems = Cart::where('user_id', $user->id)->get();
+        $cartItems = Cart::where('user_id', $user->id)
+                        ->where('status', null)
+                        ->get();
         // dd($cartItems);
         $alamat = AlamatPenagihan::where('user_id', $user->id)->first();
         $subtotal = $cartItems->sum('total_harga');
@@ -66,7 +68,7 @@ class CartController extends Controller
             'nama_paket' => $validated['nama_paket'],
             'instansi' => $validated['instansi'],
             'jumlah_halaman' => $validated['jumlah_halaman'],
-            'total_harga' => $totalHarga
+            'total_harga' => $totalHarga,
         ]);
 
         return redirect()->route('cart.index')->with('success', 'Paket berhasil ditambahkan ke keranjang.');
@@ -88,7 +90,9 @@ class CartController extends Controller
      */
     public function checkout()
     {
-        Cart::where('user_id', Auth::id())->delete();
+        $cart = Cart::where('user_id', Auth::id())->firstOrFail();
+        $cart->status = 'dalam peninjauan';
+        $cart->update();
 
         return redirect()->route('cart.index')->with('success', 'Checkout berhasil.');
     }
