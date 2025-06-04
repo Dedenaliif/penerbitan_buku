@@ -38,7 +38,10 @@
 
            <!-- Tengah - Search -->
            <div class="flex-1 flex justify-start px-6">
-            <input type="text" placeholder="Cari ..." class="w-full max-w-md px-4 py-2 rounded-md text-black bg-white border border-white focus:outline-none" />
+            <form action="{{ url('detail_buku_get') }}" method="GET">
+                @csrf
+                <input type="text" placeholder="Cari ..." class="w-full max-w-md px-4 py-2 rounded-md text-black bg-white border border-white focus:outline-none" />
+            </form>
         </div>
 
 

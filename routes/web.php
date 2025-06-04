@@ -83,6 +83,8 @@ Route::get('profil', [BerandaController::class, 'profil']);
 
 Auth::routes();
 
+Route::get('detail_buku', [BerandaController::class, 'detail_buku']);
+Route::get('detail_buku_get', [BerandaController::class, 'detail_buku_get']);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', function(){
