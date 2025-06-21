@@ -14,6 +14,8 @@
     <form method="POST" action="{{ route('register') }}">
       @csrf
 
+      <input type="hidden" name="role" id="" name="penulis" value="penulis">
+
       <!-- Informasi Login -->
       <h3 class="text-lg font-semibold text-gray-700 mb-4">Informasi Login</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">

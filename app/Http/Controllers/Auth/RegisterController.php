@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use App\User as AppUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -43,6 +42,7 @@ class RegisterController extends Controller
         return AppUser::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
             'kategori_pendaftar' => $data['kategori_pendaftar'],
             'referensi_kontak' => $data['referensi_kontak'],
             'nama_depan' => $data['nama_depan'],
